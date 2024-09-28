@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>To-Do App</title>
+    <style>
+        /* Add your CSS styles here */
+        /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Styling */
+.contenir {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Heading Styling */
+.contenir h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input Field */
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Add Task Button */
+button.addtask {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.addtask:hover {
+    background-color: #218838;
+}
+
+/* Task List Styling */
+ul#tasklist {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+ul#tasklist li {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+/* Delete Button */
+button.deleteTask {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+i.deleteTask:hover {
+    background-color: #c82333;
+}
+i{
+    background-color: #c82333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="contenir">
+        <h1>My To-Do List</h1>
+        <input type="text" id="task" placeholder="Enter a task">
+        <button class="addtask">Add Task</button>
+        <ul id="tasklist"></ul>
+    </div>
+
+    <script>
+        document.querySelector('.addtask').addEventListener('click', function () {
+    const taskInput = document.querySelector('#task');
+    const task = taskInput.value.trim();
+
+    function verifyTask(task) {
+        if (task !== "") {
+            addTask(task);
+            taskInput.value = ''; // Clear the input field
+        } else{
+            alert("Task is empty");
+        }
+    }
+
+    function addTask(task) {
+        const tasklist = document.querySelector('#tasklist');
+        const li = document.createElement('li');
+        const deleteButton = document.createElement('i');
+
+        deleteButton.className = "deleteTask";
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+        li.className = task;
+        li.textContent = task;
+
+        tasklist.appendChild(li);
+        li.appendChild(deleteButton);
+
+        // Add event listener to the delete button for removing the task
+        deleteButton.addEventListener('click', function() {
+            removeTask(li,li.className);
+        });
+    }
+    function taskComplit(taskItem){
+        taskItem
+    }
+    function removeTask(taskItem,itemclass) {
+        // Remove the task item (li) from the tasklist
+        alert(`remove ${itemclass}`)
+        taskItem.remove();
+    }
+
+    verifyTask(task);
+});
+
+    </script>
+</body>
+</html>
